@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список файлів</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; }
+        th { background-color: #f2f2f2; }
+        a { text-decoration: none; color: #0066cc; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<h1>Список файлів</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Назва файлу</th>
+        <th>Останнє оновлення</th>
+        <th>Дія</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="file : ${files}">
+        <td th:text="${file.id}"></td>
+        <td th:text="${file.fileName}"></td>
+        <td th:text="${file.lastUpdate}"></td>
+        <td>
+            <a th:href="@{'/files/' + ${file.id}}">Переглянути</a>
+            <form th:action="@{/files/{id}/delete(id=${file.id})}" method="post" style="display:inline">
+                <button type="submit">🗑️ Видалити</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/files/new">➕ Створити новий файл</a>
+</body>
+</html>

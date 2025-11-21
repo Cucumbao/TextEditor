@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${file.fileName}">Файл</title>
+</head>
+<body>
+<h1 th:text="${file.fileName}">Назва файлу</h1>
+<p><strong>Шлях:</strong> <span th:text="${file.filePath}"></span></p>
+<p><strong>Останнє оновлення:</strong> <span th:text="${file.lastUpdate}"></span></p>
+<p><strong>Користувач ID:</strong> <span th:text="${file.user}"></span></p>
+<h2>Вміст файлу</h2>
+<pre th:text="${file.content}"></pre>
+<a href="/files">Назад до списку файлів</a>
+<a th:href="@{/files/{id}/edit(id=${file.id})}">✏️ Редагувати файл</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагування файлу</title>
+</head>
+<body>
+<h1 th:text="'Редагування: ' + ${file.fileName}">Редагування файлу</h1>
+
+<form th:action="@{/files/{id}/edit(id=${file.id})}" method="post">
+    <label for="content">Контент файлу:</label><br>
+    <textarea id="content" name="content" rows="20" cols="100" th:text="${file.content}"></textarea><br><br>
+    <button type="submit">Зберегти</button>
+</form>
+
+<a th:href="@{/files/{id}(id=${file.id})}">Назад</a>
+</body>
+</html>

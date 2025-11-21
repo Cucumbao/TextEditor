@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Створити новий файл</title>
+</head>
+<body>
+<h1>Створити новий файл</h1>
+
+<form th:action="@{/files/new}" th:object="${file}" method="post">
+    <label>Назва файлу: <input type="text" th:field="*{fileName}" required /></label><br><br>
+    <label>Шлях до файлу: <input type="text" th:field="*{filePath}" /></label><br><br>
+    <label>Контент:</label><br>
+    <textarea th:field="*{content}" rows="10" cols="50"></textarea><br><br>
+    <label>ID користувача: <input type="number" th:field="*{user}" required /></label><br><br>
+    <button type="submit">💾 Створити файл</button>
+</form>
+
+<a href="/files">Назад до списку файлів</a>
+</body>
+</html>
