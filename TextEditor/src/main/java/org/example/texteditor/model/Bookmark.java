@@ -7,11 +7,7 @@ public class Bookmark {
     private Long fileid;
 
 
-    public Bookmark(Long id, int lineNumber, String description , Long fileid) {
-        this.id = id;
-        this.lineNumber = lineNumber;
-        this.description = description;
-        this.fileid = fileid;
+    public Bookmark() {
     }
 
     // Геттери та сеттери

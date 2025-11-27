@@ -2,20 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Створити новий файл</title>
+    <title>Новий файл</title>
+    <link rel="stylesheet" th:href="@{/css/new-file.css}">
 </head>
 <body>
-<h1>Створити новий файл</h1>
+<header>
+    <h1>TextEditor</h1>
+    <div class="user-info" th:if="${session.currentUser != null}">
+        <span th:text="'Привіт, ' + ${session.currentUser.username}"></span>
+        <a th:href="@{/logout}" class="logout">Вийти</a>
+    </div>
+</header>
+<div class="container">
+    <h2>Створити новий файл</h2>
+    <form th:action="@{/files/new}" th:object="${file}" method="post">
+        <label>Назва файлу:</label>
+        <input type="text" th:field="*{fileName}" required/><br/><br/>
 
-<form th:action="@{/files/new}" th:object="${file}" method="post">
-    <label>Назва файлу: <input type="text" th:field="*{fileName}" required /></label><br><br>
-    <label>Шлях до файлу: <input type="text" th:field="*{filePath}" /></label><br><br>
-    <label>Контент:</label><br>
-    <textarea th:field="*{content}" rows="10" cols="50"></textarea><br><br>
-    <label>ID користувача: <input type="number" th:field="*{user}" required /></label><br><br>
-    <button type="submit">💾 Створити файл</button>
-</form>
+        <label>Шлях/посилання:</label>
+        <input type="text" th:field="*{filePath}" placeholder="наприклад: uploads/myfile.txt" required/><br/><br/>
 
-<a href="/files">Назад до списку файлів</a>
+        <label>Вміст:</label><br/>
+        <textarea th:field="*{content}" rows="10" cols="50"></textarea><br/><br/>
+
+        <button type="submit">Створити</button>
+    </form>
+    <p><a th:href="@{/files}">Назад до файлів</a></p>
+</div>
 </body>
 </html>

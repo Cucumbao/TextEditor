@@ -30,7 +30,6 @@ public class File {
     public String getLastUpdate() { return lastUpdate; }
     public void setLastUpdate(String lastUpdate) { this.lastUpdate = lastUpdate; }
 
-
     @Override
     public String toString() {
         return "model.File.json{" +
@@ -41,6 +40,4 @@ public class File {
                 ", lastUpdate=" + lastUpdate +
                 '}';
     }
-
-
 }
